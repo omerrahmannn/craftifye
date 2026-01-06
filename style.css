@@ -44,11 +44,16 @@ body {
   border: none;
 }
 
+
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
   padding: 12px;
+}
+
+.card-grid {
+  gap: 16px;
 }
 
 ..card {
@@ -87,16 +92,23 @@ body {
   margin-top: 4px;
 }
 
+.add-to-cart {
+  background: #1f253d;
+  border-radius: 14px;
+  padding: 12px;
+  font-weight: 600;
+  transition: background .2s ease;
+}
+
+.add-to-cart:active {
+  background: #2b3260;
+}
+
 .buy {
-  display: block;
-  margin-top: 6px;
-  padding: 10px;
-  text-align: center;
-  background: var(--accent);
-  color: #000;
-  font-weight: bold;
-  border-radius: 10px;
-  text-decoration: none;
+  background: linear-gradient(135deg, #25D366, #1ebe5d);
+  border-radius: 14px;
+  padding: 12px;
+  font-weight: 800;
 }
 
 #cart-modal {
@@ -138,6 +150,24 @@ body {
   margin-top: 15px;
 }
 
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #1a1f33 25%,
+    #2a3150 37%,
+    #1a1f33 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+  border-radius: 16px;
+  height: 220px;
+}
+
+@keyframes shimmer {
+  0% { background-position: 100% 0 }
+  100% { background-position: -100% 0 }
+}
+
 
 /* Desktop */
 @media (min-width: 768px) {
@@ -145,5 +175,6 @@ body {
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
 
 
