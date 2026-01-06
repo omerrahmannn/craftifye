@@ -16,50 +16,34 @@ function render(cards) {
   grid.innerHTML = "";
 
   cards.forEach(async card => {
-    let image = card.ImageURL?.trim();
+    if (Number(card.Quantity) < 1) return; // Hide out-of-stock cards
 
-    // MTG – Scryfall
+    let image = card.ImageURL?.trim();
     if (card.TCG === "MTG" && !image) {
       try {
-        const r = await fetch(
-          `https://api.scryfall.com/cards/named?exact=${encodeURIComponent(card["Card Name"].trim())}`
-        );
+        const r = await fetch(`https://api.scryfall.com/cards/named?exact=${encodeURIComponent(card["Card Name"].trim())}`);
         const j = await r.json();
-
-        image =
-          j.image_uris?.normal ||
-          j.card_faces?.[0]?.image_uris?.normal ||
-          "";
-      } catch {
-        image = "";
-      }
+        image = j.image_uris?.normal || j.card_faces?.[0]?.image_uris?.normal || "";
+      } catch { image = ""; }
     }
 
-    // Fallback placeholder
-    if (!image) {
-      image = "https://via.placeholder.com/300x420?text=No+Image";
-    }
+    if (!image) image = "https://via.placeholder.com/300x420?text=No+Image";
 
-    const msg = `Hello, I want to buy:
-${card["Card Name"]}
-TCG: ${card.TCG}
-Condition: ${card.Condition}
-Price: ${card.Price} SAR`;
+    const msg = `Hello, I want to buy:\n${card["Card Name"]}\nTCG: ${card.TCG}\nCondition: ${card.Condition}\nPrice: ${card.Price} SAR`;
 
     grid.insertAdjacentHTML("beforeend", `
       <div class="card">
-        <img loading="lazy"
-             src="${image}"
-             onerror="this.src='https://via.placeholder.com/300x420?text=No+Image'">
+        <img loading="lazy" src="${image}" onerror="this.src='https://via.placeholder.com/300x420?text=No+Image'">
         <h4>${card["Card Name"]}</h4>
         <p>${card.TCG} • ${card.Condition}</p>
         <div class="price">${card.Price} SAR</div>
-        <a class="buy" target="_blank"
-           href="https://wa.me/966566173384?text=${encodeURIComponent(msg)}">
-           Buy
-        </a>
+        <button class="add-to-cart">Add to Cart</button>
+        <a class="buy" target="_blank" href="https://wa.me/966566173384?text=${encodeURIComponent(msg)}">Buy Now</a>
       </div>
     `);
+
+    const lastButton = grid.lastElementChild.querySelector(".add-to-cart");
+    lastButton.onclick = () => addToCart(card);
   });
 }
 
@@ -74,6 +58,7 @@ document.getElementById("tcgFilter").onchange = e => {
     ? inventory
     : inventory.filter(c => c.TCG === e.target.value));
 };
+
 
 
 
