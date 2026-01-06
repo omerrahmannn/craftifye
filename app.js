@@ -47,6 +47,44 @@ function render(cards) {
   });
 }
 
+function addToCart(card) {
+  const index = cart.findIndex(c => c.name === card["Card Name"] && c.tcg === card.TCG);
+  const stock = Number(card.Quantity);
+
+  if(index > -1){
+    if(cart[index].quantity + 1 > stock){
+      alert(`Only ${stock} in stock!`);
+      return;
+    }
+    cart[index].quantity += 1;
+  } else {
+    if(stock < 1){
+      alert("Out of stock!");
+      return;
+    }
+    cart.push({
+      tcg: card.TCG,
+      name: card["Card Name"],
+      price: parseFloat(card.Price),
+      quantity: 1,
+      max: stock
+    });
+  }
+  updateCartDisplay();
+}
+
+document.querySelectorAll(".qty-input").forEach(input => {
+  input.onchange = e => {
+    const idx = e.target.dataset.index;
+    const max = cart[idx].max;
+    let val = parseInt(e.target.value);
+    if(val > max) { val = max; alert(`Max stock: ${max}`);}
+    if(val < 1) val = 1;
+    cart[idx].quantity = val;
+    updateCartDisplay();
+  }
+});
+
 
 document.getElementById("search").oninput = e => {
   const v = e.target.value.toLowerCase();
@@ -58,6 +96,7 @@ document.getElementById("tcgFilter").onchange = e => {
     ? inventory
     : inventory.filter(c => c.TCG === e.target.value));
 };
+
 
 
 
