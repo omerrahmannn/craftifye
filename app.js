@@ -16,16 +16,28 @@ function render(cards) {
   grid.innerHTML = "";
 
   cards.forEach(async card => {
-    let image = card.ImageURL;
+    let image = card.ImageURL?.trim();
 
-    if (card.TCG === "Magic: The Gathering" && !image) {
+    // MTG – Scryfall
+    if (card.TCG === "MTG" && !image) {
       try {
-        const r = await fetch(`https://api.scryfall.com/cards/named?exact=${card["Card Name"]}`);
+        const r = await fetch(
+          `https://api.scryfall.com/cards/named?exact=${encodeURIComponent(card["Card Name"].trim())}`
+        );
         const j = await r.json();
-        image = j.image_uris?.small;
+
+        image =
+          j.image_uris?.normal ||
+          j.card_faces?.[0]?.image_uris?.normal ||
+          "";
       } catch {
         image = "";
       }
+    }
+
+    // Fallback placeholder
+    if (!image) {
+      image = "https://via.placeholder.com/300x420?text=No+Image";
     }
 
     const msg = `Hello, I want to buy:
@@ -36,13 +48,15 @@ Price: ${card.Price} SAR`;
 
     grid.insertAdjacentHTML("beforeend", `
       <div class="card">
-        <img loading="lazy" src="${image}">
+        <img loading="lazy"
+             src="${image}"
+             onerror="this.src='https://via.placeholder.com/300x420?text=No+Image'">
         <h4>${card["Card Name"]}</h4>
         <p>${card.TCG} • ${card.Condition}</p>
         <div class="price">${card.Price} SAR</div>
         <a class="buy" target="_blank"
-        href="https://wa.me/966566173384?text=${encodeURIComponent(msg)}">
-        Buy
+           href="https://wa.me/966566173384?text=${encodeURIComponent(msg)}">
+           Buy
         </a>
       </div>
     `);
@@ -60,6 +74,7 @@ document.getElementById("tcgFilter").onchange = e => {
     ? inventory
     : inventory.filter(c => c.TCG === e.target.value));
 };
+
 
 
 
