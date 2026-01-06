@@ -1,4 +1,4 @@
-const SHEET_ID = "PASTE_YOUR_SHEET_ID_HERE";
+const SHEET_ID = "1N_YBdaxHlChVPw_ZH0oYcMjCCvvhW5YJnZEKO7PNVaM";
 const API_URL = `https://opensheet.elk.sh/${SHEET_ID}/Sheet1`;
 const WHATSAPP = "966566173384";
 
@@ -60,4 +60,5 @@ document.getElementById("tcgFilter").onchange = e => {
     ? inventory
     : inventory.filter(c => c.TCG === e.target.value));
 };
+
 
