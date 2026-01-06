@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Craftifye | TCG Store</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Craftifye</h1>
+  <p>Multi-TCG Card Store</p>
+</header>
+
+<div class="controls">
+  <input type="text" id="search" placeholder="Search cards...">
+  <select id="tcgFilter">
+    <option value="all">All TCGs</option>
+    <option value="MTG">MTG</option>
+    <option value="Pokemon">Pokémon</option>
+    <option value="One Piece">One Piece</option>
+    <option value="Yu-Gi-Oh">Yu-Gi-Oh</option>
+  </select>
+</div>
+
+<div id="cards" class="grid"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
