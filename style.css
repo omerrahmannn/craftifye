@@ -4,7 +4,7 @@
   --accent: #25D366;
 }
 
-.header {
+.top {
   background: linear-gradient(180deg, #0f1428, #0b0f1a);
   border-bottom: 1px solid #1f253d;
 }
@@ -57,11 +57,7 @@ body {
   padding: 12px;
 }
 
-.card-grid {
-  gap: 16px;
-}
-
-..card {
+.card {
   background: linear-gradient(180deg, #161b2e, #0e1220);
   border-radius: 22px;
   padding: 12px;
@@ -97,12 +93,30 @@ body {
   margin-top: 4px;
 }
 
+.price-badge {
+  background: #25D366;
+  color: #000;
+  font-weight: 800;
+  padding: 6px 12px;
+  border-radius: 999px;
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 14px;
+}
+
 .add-to-cart {
   background: #1f253d;
   border-radius: 14px;
   padding: 12px;
   font-weight: 600;
   transition: background .2s ease;
+}
+
+.add-to-cart,
+.buy {
+  width: 100%;
+  border: none;
+  cursor: pointer;
 }
 
 .add-to-cart:active {
@@ -180,6 +194,7 @@ body {
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
 
 
 
