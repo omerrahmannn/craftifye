@@ -18,7 +18,7 @@ function render(cards) {
   cards.forEach(async card => {
     let image = card.ImageURL;
 
-    if (card.TCG === "MTG" && !image) {
+    if (card.TCG === "Magic: The Gathering" && !image) {
       try {
         const r = await fetch(`https://api.scryfall.com/cards/named?exact=${card["Card Name"]}`);
         const j = await r.json();
@@ -60,5 +60,6 @@ document.getElementById("tcgFilter").onchange = e => {
     ? inventory
     : inventory.filter(c => c.TCG === e.target.value));
 };
+
 
 
