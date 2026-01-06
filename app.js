@@ -19,31 +19,36 @@ function render(cards) {
     let image = card.ImageURL;
 
     if (card.TCG === "MTG" && !image) {
-      const res = await fetch(`https://api.scryfall.com/cards/named?exact=${card["Card Name"]}`);
-      const json = await res.json();
-      image = json.image_uris?.normal;
+      try {
+        const r = await fetch(`https://api.scryfall.com/cards/named?exact=${card["Card Name"]}`);
+        const j = await r.json();
+        image = j.image_uris?.small;
+      } catch {
+        image = "";
+      }
     }
 
     const msg = `Hello, I want to buy:
-Card: ${card["Card Name"]}
+${card["Card Name"]}
 TCG: ${card.TCG}
 Condition: ${card.Condition}
-Price: ${card.Price}`;
+Price: ${card.Price} SAR`;
 
-    grid.innerHTML += `
+    grid.insertAdjacentHTML("beforeend", `
       <div class="card">
-        <img src="${image}">
+        <img loading="lazy" src="${image}">
         <h4>${card["Card Name"]}</h4>
-        <p>${card.TCG} | ${card.Condition}</p>
-        <p><b>${card.Price} SAR</b></p>
+        <p>${card.TCG} • ${card.Condition}</p>
+        <div class="price">${card.Price} SAR</div>
         <a class="buy" target="_blank"
-        href="https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}">
-        Buy on WhatsApp
+        href="https://wa.me/966566173384?text=${encodeURIComponent(msg)}">
+        Buy
         </a>
       </div>
-    `;
+    `);
   });
 }
+
 
 document.getElementById("search").oninput = e => {
   const v = e.target.value.toLowerCase();
@@ -55,3 +60,4 @@ document.getElementById("tcgFilter").onchange = e => {
     ? inventory
     : inventory.filter(c => c.TCG === e.target.value));
 };
+
