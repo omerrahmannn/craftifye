@@ -47,7 +47,16 @@ function render(cards) {
   });
 }
 
-function addToCart(card) {
+function calculatePrice(card, quantity){
+  let base = parseFloat(card.Price);
+
+  // Bulk discount example
+  if(quantity >= 6) return +(base * 0.8).toFixed(2);
+  if(quantity >= 3) return +(base * 0.9).toFixed(2);
+  return base;
+}
+
+function addToCart(card){
   const index = cart.findIndex(c => c.name === card["Card Name"] && c.tcg === card.TCG);
   const stock = Number(card.Quantity);
 
@@ -57,21 +66,20 @@ function addToCart(card) {
       return;
     }
     cart[index].quantity += 1;
+    cart[index].price = calculatePrice(card, cart[index].quantity);
   } else {
-    if(stock < 1){
-      alert("Out of stock!");
-      return;
-    }
+    if(stock < 1){ alert("Out of stock!"); return; }
     cart.push({
       tcg: card.TCG,
       name: card["Card Name"],
-      price: parseFloat(card.Price),
       quantity: 1,
-      max: stock
+      max: stock,
+      price: calculatePrice(card, 1)
     });
   }
   updateCartDisplay();
 }
+
 
 document.querySelectorAll(".qty-input").forEach(input => {
   input.onchange = e => {
@@ -96,6 +104,7 @@ document.getElementById("tcgFilter").onchange = e => {
     ? inventory
     : inventory.filter(c => c.TCG === e.target.value));
 };
+
 
 
 
