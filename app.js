@@ -20,13 +20,14 @@ document.getElementById("close-contact").onclick = () => {
 };
 
 /* LANDING FILTER */
-document.querySelectorAll(".tcg-grid button").forEach(btn => {
-  btn.onclick = () => {
-    filter.value = btn.dataset.tcg;
+document.querySelectorAll(".tcg-card").forEach(card => {
+  card.onclick = () => {
+    filter.value = card.dataset.tcg;
     landing.style.display = "none";
     renderCards();
   };
 });
+
 
 /* SAMPLE DATA (REPLACE WITH SHEET) */
 const data = [
