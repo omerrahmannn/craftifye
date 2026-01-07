@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<<head>
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Crafty Hub Store</title>
 
-  <link rel="icon" href="assets/favicon.ico">
   <link rel="icon" href="assets/favicon.png">
   <link rel="apple-touch-icon" href="assets/favicon.png">
 
@@ -17,7 +16,7 @@
 <header class="nav"> 
   <div class="nav-brand">
   <a href="/" class="brand-link">
-    <img src="Crafty Hub/FullLogo_Transparent_NoBuffer.png" alt="Crafty Hub Logo">
+    <img src="assets/logo.png" alt="Crafty Hub Logo">
   </a>
   </div>
   <nav class="nav-links">
@@ -28,15 +27,40 @@
 </header>
 
 <section id="landing" class="landing">
-  <h2>Choose Your Game</h2>
-  <div class="tcg-grid">
-    <button data-tcg="MTG">🧙 Magic: The Gathering</button>
-    <button data-tcg="Pokemon">⚡ Pokémon</button>
-    <button data-tcg="One Piece">🏴‍☠️ One Piece</button>
-    <button data-tcg="Yu-Gi-Oh">🐉 Yu-Gi-Oh</button>
-    <button data-tcg="all">🃏 View All Cards</button>
+  <h2>Shop by Game</h2>
+
+  <div class="tcg-cards">
+    <div class="tcg-card" data-tcg="MTG">
+      <img src="https://images.scryfall.com/cards/art_crop/front/0/0/00000000.jpg" alt="MTG">
+      <h3>Magic: The Gathering</h3>
+      <button>View Cards</button>
+    </div>
+
+    <div class="tcg-card" data-tcg="Pokemon">
+      <img src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_tiles/strategy.jpg" alt="Pokemon">
+      <h3>Pokémon</h3>
+      <button>View Cards</button>
+    </div>
+
+    <div class="tcg-card" data-tcg="One Piece">
+      <img src="https://en.onepiece-cardgame.com/images/cardlist/card/OP01-001.png" alt="One Piece">
+      <h3>One Piece</h3>
+      <button>View Cards</button>
+    </div>
+
+    <div class="tcg-card" data-tcg="Yu-Gi-Oh">
+      <img src="https://images.ygoprodeck.com/images/cards/46986414.jpg" alt="YuGiOh">
+      <h3>Yu-Gi-Oh</h3>
+      <button>View Cards</button>
+    </div>
+
+    <div class="tcg-card all" data-tcg="all">
+      <h3>All Games</h3>
+      <button>View All Cards</button>
+    </div>
   </div>
 </section>
+
 
 <section class="toolbar">
   <input id="search" placeholder="Search cards" />
@@ -65,6 +89,9 @@
 <script src="app.js"></script>
 </body>
 </html>
+
+
+
 
 
 
