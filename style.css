@@ -41,6 +41,17 @@ body {
   font-weight: 600;
 }
 
+.nav-brand img {
+  height: 34px;
+  width: auto;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
 /* LANDING */
 .landing {
   padding: 20px;
@@ -150,3 +161,4 @@ body {
 @media (min-width: 768px) {
   .cards { grid-template-columns: repeat(4, 1fr); }
 }
+
