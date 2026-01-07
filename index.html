@@ -1,40 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Craftifye | Multi-TCG Store</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Craftifye TCG Store</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<header class="top">
-  <h1>Craftifye</h1>
-  <span>Multi-TCG Cards • Instant WhatsApp Checkout</span>
+<header class="nav">
+  <div class="nav-brand">Craftifye</div>
+  <nav class="nav-links">
+    <a href="https://www.craftifye.com" target="_blank">3D Layers of Fun</a>
+    <a href="#" id="nav-store">TCG Store</a>
+    <a href="#" id="nav-contact">Contact</a>
+  </nav>
 </header>
 
-<div class="skeleton"></div>
-<img src="..." onload="this.previousElementSibling.remove()">
+<section id="landing" class="landing">
+  <h2>Choose Your Game</h2>
+  <div class="tcg-grid">
+    <button data-tcg="MTG">🧙 Magic: The Gathering</button>
+    <button data-tcg="Pokemon">⚡ Pokémon</button>
+    <button data-tcg="One Piece">🏴‍☠️ One Piece</button>
+    <button data-tcg="Yu-Gi-Oh">🐉 Yu-Gi-Oh</button>
+    <button data-tcg="all">🃏 View All Cards</button>
+  </div>
+</section>
 
-<div class="controls">
-  <input id="search" placeholder="Search cards...">
-  <select id="tcgFilter">
+<section class="toolbar">
+  <input id="search" placeholder="Search cards" />
+  <select id="filter">
     <option value="all">All Games</option>
-    <option value="MTG">Magic: The Gathering</option>
+    <option value="MTG">MTG</option>
     <option value="Pokemon">Pokémon</option>
     <option value="One Piece">One Piece</option>
     <option value="Yu-Gi-Oh">Yu-Gi-Oh</option>
   </select>
-</div>
+</section>
 
-<div id="cards" class="grid">
-  <div class="price-badge"></div>
+<main id="cards" class="cards"></main>
+
+<button id="cartBtn" class="cart-fab">🛒 0</button>
+
+<div id="contact-panel" class="contact-panel">
+  <div class="contact-box">
+    <h3>Contact Craftifye</h3>
+    <a href="https://wa.me/966566173384" class="contact-btn">💬 WhatsApp</a>
+    <a href="mailto:info@craftifye.com" class="contact-btn ghost">✉️ Email</a>
+    <button id="close-contact" class="close-btn">Close</button>
+  </div>
 </div>
 
 <script src="app.js"></script>
 </body>
 </html>
-
-
-
-
