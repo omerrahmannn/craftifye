@@ -5,19 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Crafty Hub Store</title>
 
-  <link rel="icon" href="assets/favicon.png">
+  <!-- Favicon -->
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="assets/favicon.png">
 
+  <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
+<!-- NAVBAR -->
 <header class="nav"> 
   <div class="nav-brand">
-  <a href="/" class="brand-link">
-    <img src="assets/logo.png" alt="Crafty Hub Logo">
-  </a>
+    <a href="/" class="brand-link">
+      <img src="assets/logo.png" alt="Crafty Hub Logo">
+    </a>
   </div>
   <nav class="nav-links">
     <a href="#" id="nav-store">Crafty Hub Store</a>
@@ -26,30 +30,37 @@
   </nav>
 </header>
 
+<!-- LANDING: TCG CATEGORY CARDS -->
 <section id="landing" class="landing">
   <h2>Shop by Game</h2>
 
   <div class="tcg-cards">
     <div class="tcg-card" data-tcg="MTG">
-      <img src="https://images.scryfall.com/cards/art_crop/front/0/0/00000000.jpg" alt="MTG">
+      <img src="assets/mtg.jpg" alt="MTG">
       <h3>Magic: The Gathering</h3>
       <button>View Cards</button>
     </div>
 
+    <div class="tcg-card" data-tcg="Riftbound">
+      <img src="assets/riftbound.webp" alt="Riftbound">
+      <h3>Riftbound</h3>
+      <button>View Cards</button>
+    </div>
+
     <div class="tcg-card" data-tcg="Pokemon">
-      <img src="https://assets.pokemon.com/assets/cms2/img/trading-card-game/_tiles/strategy.jpg" alt="Pokemon">
+      <img src="assets/pokemon.png" alt="Pokemon">
       <h3>Pokémon</h3>
       <button>View Cards</button>
     </div>
 
     <div class="tcg-card" data-tcg="One Piece">
-      <img src="https://en.onepiece-cardgame.com/images/cardlist/card/OP01-001.png" alt="One Piece">
+      <img src="assets/onepiece.jpg" alt="One Piece">
       <h3>One Piece</h3>
       <button>View Cards</button>
     </div>
 
     <div class="tcg-card" data-tcg="Yu-Gi-Oh">
-      <img src="https://images.ygoprodeck.com/images/cards/46986414.jpg" alt="YuGiOh">
+      <img src="assets/yugioh.jpg" alt="Yu-Gi-Oh">
       <h3>Yu-Gi-Oh</h3>
       <button>View Cards</button>
     </div>
@@ -61,37 +72,37 @@
   </div>
 </section>
 
-
+<!-- SEARCH & FILTER -->
 <section class="toolbar">
   <input id="search" placeholder="Search cards" />
   <select id="filter">
     <option value="all">All Games</option>
-    <option value="MTG">MTG</option>
+    <option value="MTG">Magic: The Gathering</option>
+    <option value="Riftbound">Riftbound</option>
     <option value="Pokemon">Pokémon</option>
     <option value="One Piece">One Piece</option>
     <option value="Yu-Gi-Oh">Yu-Gi-Oh</option>
   </select>
 </section>
 
+<!-- CARD GRID -->
 <main id="cards" class="cards"></main>
 
+<!-- CART BUTTON -->
 <button id="cartBtn" class="cart-fab">🛒 0</button>
 
+<!-- CONTACT PANEL -->
 <div id="contact-panel" class="contact-panel">
   <div class="contact-box">
-    <h3>Contact Craftifye</h3>
+    <h3>Contact Crafty Hub</h3>
     <a href="https://wa.me/966566173384" class="contact-btn">💬 WhatsApp</a>
     <a href="mailto:info@craftifye.com" class="contact-btn ghost">✉️ Email</a>
     <button id="close-contact" class="close-btn">Close</button>
   </div>
 </div>
 
+<!-- JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.6.0/tabletop.min.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
-
-
-
-
-
-

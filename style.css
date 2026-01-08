@@ -3,18 +3,19 @@
   --panel: #151a28;
   --muted: #9aa4b2;
   --accent: #25D366;
+  --card-shadow: rgba(0, 0, 0, 0.5);
 }
 
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--bg);
   color: #fff;
 }
 
-/* NAV */
+/* NAVBAR */
 .nav {
   display: flex;
   justify-content: space-between;
@@ -24,32 +25,21 @@ body {
   border-bottom: 1px solid #1f253d;
 }
 
-.nav-brand {
-  font-size: 20px;
-  font-weight: 800;
+.nav-brand img {
+  height: 36px;
+  width: auto;
 }
 
 .nav-links {
   display: flex;
-  gap: 14px;
+  gap: 16px;
 }
 
 .nav-links a {
   color: var(--muted);
   text-decoration: none;
-  font-size: 13px;
   font-weight: 600;
-}
-
-.nav-brand img {
-  height: 34px;
-  width: auto;
-}
-
-.brand-link {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
+  font-size: 14px;
 }
 
 /* LANDING */
@@ -58,120 +48,24 @@ body {
   text-align: center;
 }
 
-.tcg-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
-}
-
-.tcg-grid button {
-  background: linear-gradient(180deg, #1b2136, #121729);
-  border-radius: 18px;
-  padding: 20px 10px;
-  color: #fff;
-  font-weight: 700;
-  border: none;
-}
-
-/* TOOLBAR */
-.toolbar {
-  display: flex;
-  gap: 8px;
-  padding: 12px;
-}
-
-.toolbar input,
-.toolbar select {
-  flex: 1;
-  padding: 10px;
-  border-radius: 10px;
-  border: none;
-  background: #1c2238;
-  color: #fff;
-}
-
-/* CARDS */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
-  padding: 14px;
-}
-
-.card {
-  background: linear-gradient(180deg, #1b2136, #121729);
-  border-radius: 18px;
-  padding: 10px;
-}
-
-.card img {
-  width: 100%;
-  border-radius: 14px;
-}
-
-.price {
-  font-weight: 800;
-}
-
-/* CART */
-.cart-fab {
-  position: fixed;
-  bottom: 16px;
-  right: 16px;
-  background: var(--accent);
-  color: #000;
-  border-radius: 999px;
-  padding: 14px 18px;
-  font-weight: 800;
-  border: none;
-}
-
-/* CONTACT */
-.contact-panel {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.8);
-}
-
-.contact-box {
-  background: var(--panel);
-  margin: auto;
-  padding: 20px;
-  border-radius: 18px;
-  text-align: center;
-}
-
-.contact-btn {
-  display: block;
-  padding: 12px;
-  border-radius: 14px;
-  background: var(--accent);
-  color: #000;
-  font-weight: 800;
-  text-decoration: none;
-  margin-bottom: 10px;
-}
-
-.contact-btn.ghost {
-  background: #1c2238;
-  color: #fff;
-}
-
-/* TCG CATEGORY CARDS */
 .tcg-cards {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
-  padding: 16px;
 }
 
 .tcg-card {
   background: linear-gradient(180deg, #1b2136, #121729);
-  border-radius: 20px;
+  border-radius: 18px;
   overflow: hidden;
   text-align: center;
   cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tcg-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px var(--card-shadow);
 }
 
 .tcg-card img {
@@ -194,18 +88,163 @@ body {
   font-weight: 700;
   background: var(--accent);
   color: #000;
+  cursor: pointer;
 }
 
-.tcg-card.all {
+/* TOOLBAR */
+.toolbar {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+}
+
+.toolbar input,
+.toolbar select {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: #1c2238;
+  color: #fff;
+}
+
+/* CARD GRID */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  padding: 14px;
+}
+
+.card {
+  background: linear-gradient(180deg, #1b2136, #121729);
+  border-radius: 18px;
+  padding: 12px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  background: linear-gradient(180deg, #2a3050, #1a2040);
+  box-shadow: 0 8px 20px var(--card-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px var(--card-shadow);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  margin-bottom: 10px;
+}
+
+.card h4 {
+  font-size: 16px;
+  margin: 6px 0;
+}
+
+/* Compact info box for extra fields */
+.card-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 10px;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.card-info p {
+  margin: 0;
+}
+
+.price {
+  font-weight: 800;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.buy-btn {
+  background: var(--accent);
+  border: none;
+  border-radius: 14px;
+  padding: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #000;
+  transition: background 0.2s ease;
+}
+
+.buy-btn:hover {
+  background: #1ebe5d;
+}
+
+/* CART BUTTON */
+.cart-fab {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  background: var(--accent);
+  color: #000;
+  border-radius: 999px;
+  padding: 14px 18px;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px var(--card-shadow);
+}
+
+/* CONTACT PANEL */
+.contact-panel {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.contact-box {
+  background: var(--panel);
+  padding: 20px;
+  border-radius: 18px;
+  text-align: center;
+  max-width: 300px;
+  width: 90%;
+}
+
+.contact-btn {
+  display: block;
+  padding: 12px;
+  border-radius: 14px;
+  background: var(--accent);
+  color: #000;
+  font-weight: 800;
+  text-decoration: none;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.contact-btn.ghost {
+  background: #1c2238;
+  color: #fff;
+}
+
+/* RESPONSIVE */
 @media (min-width: 768px) {
   .tcg-cards {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
+@media (min-width: 1024px) {
+  .tcg-cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
